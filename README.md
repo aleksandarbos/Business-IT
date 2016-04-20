@@ -7,4 +7,5 @@ Checkpoint 1
     - Adding
     - Deleting
     - Editing
-  - TODO: Filter searching.
+    - Filtering by all table columns.
+
