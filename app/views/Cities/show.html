@@ -1,0 +1,58 @@
+#{extends 'main.html' /}
+#{set title:'Cities' /}
+
+<h1>Cities</h1>
+
+<hr/>
+
+<table>
+	<tr>
+		<th>Name of City</th>
+		<th>ID</th>
+		<th>Country</th>
+		<th>Zip Code</th>
+		<th></th>
+		<th></th>
+	</tr>
+	#{list items:cities, as:'city'}
+	<tr>
+		<td>${city.name}</td>
+		<td>${city.sifra}</td>
+		<td>${city.country.name}</td>
+		<td>${city.zipCode}</td>
+		<td><a href="@{Cities.edit(city.id)}">edit</a></td>
+		<td><a href="@{Cities.delete(city.id)}">delete</a></td>
+	</tr>
+	#{/list}
+</table>
+
+<div class="add">
+	<h3>Add new city</h3>
+	#{form @Cities.create(), method:'POST'}
+	<label for = "city.sifra">ID</label>
+	<input type = "text" name = "city.sifra"/>
+	<br/>
+	<br/>
+	<label for = "city.zipCode">Zip code</label>
+	<input type = "text" name = "city.zipCode"/>
+	<br/>
+	<br/>
+	<label for = "city.name">Name</label>
+	<input type = "text" name = "city.name"/>
+	<br/>
+	<br/>
+	<label for ="countryId">Country</label>
+	<select name="countryId">
+		#{list items:countries, as:'country'}
+			<option value = ${country.id}>${country.name}</option>
+		#{/list}
+	</select>
+	<br/>
+	<br/>
+	<input type = "submit" value = "Submit" style="margin-left:3em"/>
+	#{/form}
+</div>
+
+
+<hr/>
+<a href="@{Application.index()}">Back to homepage</a>

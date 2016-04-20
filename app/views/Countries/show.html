@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+#{set title:'Countries' /}
+
+<h1>Countries</h1>
+
+<hr/>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>ID</th>
+		<th></th>
+		<th></th>
+	</tr>
+	#{list items:countries, as:'country'}
+	<tr>
+		<td>${country.name}</td>
+		<td>${country.sifra}</td>
+		<td><a href="@{Countries.edit(country.id)}">edit</a></td>
+		<td><a href="@{Countries.delete(country.id)}">delete</a></td>
+	</tr>
+	#{/list}
+</table>
+
+<div class="add">
+	<h3>Add new country</h3>
+	#{form @Countries.create(), method:'POST'}
+	<label for = "country.sifra">ID</label>
+	<input type = "text" name = "country.sifra"/>
+	<br/>
+	<br/>
+	<label for = "country.name">Name</label>
+	<input type = "text" name = "country.name"/>
+	<br/>
+	<input type = "submit" value = "Submit" style="margin-left:3em"/>
+	#{/form}
+</div>
+
+<hr/>
+<a href="@{Application.index()}">Back to homepage</a>

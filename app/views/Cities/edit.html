@@ -1,0 +1,41 @@
+#{extends 'main.html' /}
+#{set title:'Edit City' /}
+
+<h3>Edit City: ${city.name}</h3>
+
+<hr/>
+
+<table>
+#{form @Cities.update(), method:'POST'}
+	<tr>
+		<th>Name of City</th>
+		<th>ID</th>
+		<th>Zip Code</th>
+		<th>Country</th>
+	</tr>
+	<tr>
+		<td>
+			<input type="text" name="city.name" value="${city.name}"/>
+		</td>
+		<td>
+			<input type="text" name="city.sifra" value="${city.sifra}"/>
+		</td>
+		<td>
+			<input type="text" name="city.zipCode" value="${city.zipCode}"/>
+		</td>
+		<td>
+			<select name="city.country.id">
+			#{list items:countries, as:'country'}
+				<option value = ${country.id} ${country.id == city.country.id ? 'selected' : ''}>${country.name}</option>
+			#{/list}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="hidden" name="city.id" value="${city.id}"/>
+			<input type="submit" value="Submit changes"/>
+		</td>
+	</tr>
+#{/form}	
+</table>

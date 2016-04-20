@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Edit Country' /}
+
+<h3>Edit Country: ${country.name}</h3>
+
+<hr/>
+
+<table>
+#{form @Countries.update(), method:'POST'}
+	<tr>
+		<th>Name of Country</th>
+		<th>ID</th>
+	</tr>
+	<tr>
+		<td>
+			<input type="text" name="country.name" value="${country.name}"/>
+		</td>
+		<td>
+			<input type="text" name="country.sifra" value="${country.sifra}"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="hidden" name="country.id" value="${country.id}"/>
+			<input type="submit" value="Submit changes"/>
+		</td>
+	</tr>
+#{/form}	
+</table>
