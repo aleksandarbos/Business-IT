@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.City;
 import models.Country;
 import play.mvc.Controller;
 
@@ -34,6 +35,13 @@ public class Countries extends Controller {
 		country.delete();
 		System.out.println("Deleted country with id: " + countryId);		
 		show();
+	}
+	
+	public static void filter(Country country) {
+		List<Country> countries = Country.find(
+				"bySifraLikeAndNameLike", "%"+country.sifra + "%", "%" + country.name + "%").fetch();
+		
+		renderTemplate("Countries/show.html", countries);
 	}
 	
 }

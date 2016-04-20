@@ -26,6 +26,8 @@
 	#{/list}
 </table>
 
+<br/>
+
 <div class="add">
 	<h3>Add new city</h3>
 	#{form @Cities.create(), method:'POST'}
@@ -53,6 +55,33 @@
 	#{/form}
 </div>
 
+
+<div class="filter">
+	<h3>Filter cities</h3>
+	#{form @Cities.filter(), method:'POST'}
+	<label for = "city.sifra">ID</label>
+	<input type = "text" name = "city.sifra"/>
+	<br/>
+	<br/>
+	<label for = "city.zipCode">Zip code</label>
+	<input type = "text" name = "city.zipCode"/>
+	<br/>
+	<br/>
+	<label for = "city.name">Name</label>
+	<input type = "text" name = "city.name"/>
+	<br/>
+	<br/>
+	<label for ="city.country.id">Country</label>
+	<select name="city.country.id">
+		#{list items:countries, as:'country'}
+			<option value = ${country.id}>${country.name}</option>
+		#{/list}
+	</select>
+	<br/>
+	<br/>
+	<input type = "submit" value = "Submit query" style="margin-left:3em"/>
+	#{/form}
+</div>
 
 <hr/>
 <a href="@{Application.index()}">Back to homepage</a>

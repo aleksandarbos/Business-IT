@@ -36,5 +36,20 @@
 	#{/form}
 </div>
 
+<div class="filter">
+	<h3>Filter countries</h3>
+	#{form @Countries.filter(), method:'POST'}
+	<label for = "country.sifra">ID</label>
+	<input type = "text" name = "country.sifra"/>
+	<br/>
+	<br/>
+	<label for = "country.name">Name</label>
+	<input type = "text" name = "country.name"/>
+	<br/>
+	<br/>
+	<input type = "submit" value = "Submit query" style="margin-left:3em"/>
+	#{/form}
+</div>
+
 <hr/>
 <a href="@{Application.index()}">Back to homepage</a>
