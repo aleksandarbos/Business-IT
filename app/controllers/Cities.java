@@ -44,10 +44,19 @@ public class Cities extends Controller {
 	}
 	
 	public static void filter(City city) {
+		
 		List<City> cities = City.find("bySifraLikeAndNameLikeAndCountry_ID", 
 							"%"+city.sifra + "%", "%" + city.name + "%", city.country.id
 							).fetch();
 		List<Country> countries = Country.findAll();
+		
+		renderTemplate("Cities/show.html", cities, countries);
+	}
+	
+	public static void nextFilter(Long countryId) {	
+		Country country = Country.findById(countryId);
+		List<Country> countries = Country.findAll();
+		List<City> cities = country.cities;
 		
 		renderTemplate("Cities/show.html", cities, countries);
 	}

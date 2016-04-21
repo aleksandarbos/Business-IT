@@ -19,9 +19,15 @@
 		<td>${city.name}</td>
 		<td>${city.sifra}</td>
 		<td>${city.country.name}</td>
-		<td>${city.zipCode}</td>
-		<td><a href="@{Cities.edit(city.id)}">edit</a></td>
-		<td><a href="@{Cities.delete(city.id)}">delete</a></td>
+		<td>${city.zipCode}</td>		
+		<td><a href="@{Cities.edit(city.id)}">
+			edit <img src="/public/images/icons/edit.png"/>
+			</a>
+		</td>
+		<td><a href="@{Cities.delete(city.id)}">
+			delete <img src="/public/images/icons/delete.png"/>
+			</a>
+		</td>	
 	</tr>
 	#{/list}
 </table>

@@ -11,13 +11,24 @@
 		<th>ID</th>
 		<th></th>
 		<th></th>
+		<th></th>
 	</tr>
 	#{list items:countries, as:'country'}
 	<tr>
 		<td>${country.name}</td>
 		<td>${country.sifra}</td>
-		<td><a href="@{Countries.edit(country.id)}">edit</a></td>
-		<td><a href="@{Countries.delete(country.id)}">delete</a></td>
+		<td><a href="@{Cities.nextFilter(country.id)}">
+			next <img src="/public/images/icons/next.png"/>
+			</a>
+		</td>
+		<td><a href="@{Countries.edit(country.id)}">
+			edit <img src="/public/images/icons/edit.png"/>
+			</a>
+		</td>s
+		<td><a href="@{Countries.edit(country.id)}">
+			delete <img src="/public/images/icons/delete.png"/>
+			</a>
+		</td>					
 	</tr>
 	#{/list}
 </table>
